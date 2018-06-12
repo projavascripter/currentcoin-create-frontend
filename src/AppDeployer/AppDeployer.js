@@ -272,21 +272,24 @@ class AppDeployer extends Component {
   checkIfDeployed(serviceAddress) {
     return axios.get(`/checkservice/${serviceAddress}`)
     .then(response => {
-      console.log('checkservice response')
-      console.log(response)
-
       if (response.status === 201 || response.status === 200) {
-        const { txHash } = this.state.progress[serviceAddress]
 
-        this.setState({
-          progress: Object.assign({}, this.state.progress, {
-            [serviceAddress]: {
-              state: 'done',
-              txHash: txHash,
-              serviceUrl: `http://${serviceAddress}.s3-website.us-east-2.amazonaws.com`
-            }
+        // wait an extra 2 seconds because it seems that the aws server has
+        // access to the deployed service before us
+        setTimeout(() => {
+          const { txHash } = this.state.progress[serviceAddress]
+
+          this.setState({
+            progress: Object.assign({}, this.state.progress, {
+              [serviceAddress]: {
+                state: 'done',
+                txHash: txHash,
+                serviceUrl: `http://${serviceAddress}.s3-website.us-east-2.amazonaws.com`
+              }
+            })
           })
-        })
+        }, 3000)
+
       } else {
         setTimeout(() => this.checkIfDeployed(serviceAddress), 5000)
       }
