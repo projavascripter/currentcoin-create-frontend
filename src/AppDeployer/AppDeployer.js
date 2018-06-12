@@ -272,6 +272,9 @@ class AppDeployer extends Component {
   checkIfDeployed(serviceAddress) {
     return axios.get(`/checkservice/${serviceAddress}`)
     .then(response => {
+      console.log('checkservice response')
+      console.log(response)
+
       if (response.status === 201 || response.status === 200) {
         const { txHash } = this.state.progress[serviceAddress]
 
