@@ -1,0 +1,28 @@
+{
+  "name": "app-deployer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.2.0",
+    "axios": "^0.18.0",
+    "camel-case": "^3.0.0",
+    "font-awesome": "^4.7.0",
+    "humanize-duration": "^3.12.1",
+    "js-sha3": "^0.7.0",
+    "no-case": "^2.3.2",
+    "pascal-case": "^2.0.1",
+    "qr.js": "^0.0.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "1.1.4",
+    "socket.io-client": "^2.1.1",
+    "title-case": "^2.1.1",
+    "web3": "^1.0.0-beta.30"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && (rm -r ../web-server/front-end || true) && cp -rv build ../web-server/front-end",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

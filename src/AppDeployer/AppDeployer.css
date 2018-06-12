@@ -1,0 +1,313 @@
+:root {
+  --cell-margin: 0.8em;
+  --border-radius: 0.8em;
+}
+
+body {
+  background: url("off_white_background.jpg");
+}
+
+div:focus {
+  outline: none;
+}
+
+.table, .td {
+  border-width: 1px;
+  border-radius: var(--border-radius);
+}
+
+.table {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: var(--cell-margin);
+}
+
+.td {
+  background-color: #1DAEEC77; /*#1DAEEC18;*/
+  padding: 0.8em;
+  margin-top: var(--cell-margin);
+  margin-left: var(--cell-margin);
+  overflow: hidden;
+  height: 2em;
+  width: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected-cell {
+  background: #fffE;
+}
+
+.service-cell {
+  /* #2045B5; #1DAEEC77; #3C1DEC; #1F72D1; #21355E;*/
+  background: #2768A5;
+  color: white;
+}
+
+.unselected-service-cell {
+  opacity: 0.5;
+}
+
+.th {
+  text-align: center;
+  margin-bottom: 0.3em;
+  margin-left: var(--cell-margin);
+  font-weight: bold;
+  cursor: default;
+  /* display: none; */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  font-family: monospace;
+  padding: 0.2em;
+  background-color: #FFF0;
+  font-size: 1.2em;
+  border: none;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.input[type=text] {
+  cursor: text;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.AppDeployer-services-column {
+  width: 20%;
+  user-select: none;
+  cursor: pointer;
+}
+
+.AppDeployer-params-column {
+  width: 30%;
+}
+
+.AppDeployer-service-preview-column {
+  width: 49%;
+}
+
+.AppDeployer-service-preview {
+  height: auto;
+  margin-right: var(--cell-margin);
+  position: relative;
+  border-radius: 0;
+  padding: 0;
+}
+
+.AppDeployer-service-preview--expanded {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  border-radius: 0;
+  z-index: 10;
+}
+
+.expand {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  font-size: 1.4em;
+  color: white;
+  text-shadow: 0 0 0.5em #0007, 0 0 1em #0007;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  z-index: 4;
+}
+
+.expand:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1.5em 1.5em;
+}
+
+.title {
+  cursor: default;
+  font-size: 1.7em;
+  font-family: serif;
+}
+
+.balance-number {
+  font-family: monospace;
+  display: inline;
+  padding: 0 0.5em;
+}
+
+.field {
+  font-family: monospace;
+  display: inline;
+  font-size: 1.5em;
+  padding: 0 0.5em;
+}
+
+.h1, .h2, .h3, .h4, .h5 {
+  /* font-family: 'Roboto Slab', serif; */
+  font-family: serif;
+}
+
+.h3 {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+.deploy-feedback {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  min-width: 50%;
+  background-color: #CFCACEFB;
+  z-index: 5;
+  padding: 4em;
+  box-shadow: 0 0 1em #0007;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr {
+  margin-top: 1em;
+  cursor: pointer;
+}
+
+.close-feedback {
+  position: absolute;
+  top: 0.8em;
+  right: 0.8em;
+  font-size: 1.5em;
+  color: #0007;
+  cursor: pointer;
+}
+
+.deploy {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 2em;
+  padding-top: 2em;
+  width: 30%
+}
+
+.deploy-button {
+  color: black;
+  font-family: monospace;
+  padding: 0.5em 1.5em;
+  border: solid black 1px;
+  border-radius: 10em;
+  border-width: 1px;
+  user-select: none;
+  cursor: pointer;
+  display: inline;
+}
+
+.deploy-button:hover {
+  background: black;
+  color: white;
+}
+
+.buttons {
+  margin-top: 3em;
+}
+
+.yes-no-button {
+  margin: 1em 0.5em;
+  font-size: 1.5em;
+}
+
+.deploy-service-time {
+  width: 6em;
+  margin-left: 1em;
+  position: relative;
+}
+
+.deploy-service-time-input {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.deploy-service-time-value {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: monospace;
+  text-align: center;
+  cursor: default;
+}
+
+.address {
+  font-family: monospace;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.address--expanded {
+  flex-direction: column;
+}
+
+.qr-icon {
+  cursor: pointer;
+  font-size: 2em;
+  margin-left: 1ch;
+}
+
+.service-link {
+  font-size: 0.8em;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0.5em;
+  left: 0.5em;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.progress-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em;
+  background: #FFFFFF77;
+  border-radius: 0.2em;
+  z-index: 1;
+}
+
+.small-link {
+  font-size: 0.7em;
+}

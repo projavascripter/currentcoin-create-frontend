@@ -1,0 +1,12 @@
+[submodule "src/templates/chat-template"]
+	path = src/templates/chat-template
+	url = https://github.com/CurrentCoin/chat-template.git
+[submodule "src/templates/contact-us-template"]
+	path = src/templates/contact-us-template
+	url = https://github.com/CurrentCoin/contact-us-template.git
+[submodule "src/templates/info-spinner-template"]
+	path = src/templates/info-spinner-template
+	url = https://github.com/CurrentCoin/info-spinner-template.git
+[submodule "src/templates/brand-page-template"]
+	path = src/templates/brand-page-template
+	url = https://github.com/CurrentCoin/brand-page-template.git
