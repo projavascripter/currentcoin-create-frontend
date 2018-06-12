@@ -6,7 +6,11 @@ This is the frontend of CurrentCoin Create.
 
 ### To run
 
-Make sure all submodules (nested git repositories) are ready.
+Make sure all submodules (nested git repositories) are ready. Clear instructions for submodules coming soon. Useful commands:
+
+`git submodule update --recursive --init`
+
+`git submodule foreach --recursive 'git fetch && git checkout master'`
 
 From your local machine,
 
