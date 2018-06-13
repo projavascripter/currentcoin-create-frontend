@@ -162,7 +162,7 @@ class AppDeployer extends Component {
     }
   }
 
-  demoDeploy = () => {
+  confirmDeploy = () => {
     if (!this.state.selectedServiceName) {
       this.setState({
         feedback: 'You must select a service to deploy'
@@ -184,7 +184,7 @@ class AppDeployer extends Component {
         <div className='buttons'>
           <div
             className='deploy-button yes-no-button'
-            onClick={this.demoDeploy4Real}
+            onClick={this.demoDeploy}
           >
             Yes
           </div>
@@ -199,7 +199,7 @@ class AppDeployer extends Component {
     })
   }
 
-  demoDeploy4Real = () => {
+  demoDeploy = () => {
     const serviceName = this.state.selectedServiceName
     const serviceOptions = this.state[serviceName]
     const serviceAddress = calculateServiceAddress(serviceName, serviceOptions)
@@ -338,7 +338,7 @@ class AppDeployer extends Component {
           </div>
           <div
             className='deploy-button'
-            onClick={this.demoDeploy}
+            onClick={this.confirmDeploy}
           >
             Deploy Service
           </div>
