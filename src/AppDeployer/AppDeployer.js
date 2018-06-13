@@ -32,6 +32,8 @@ context.keys().forEach(filePath => {
   serviceDefaults[serviceName] = defaults
 })
 
+const demoDeployTime = 1
+
 class AppDeployer extends Component {
 
   state = {
@@ -174,9 +176,9 @@ class AppDeployer extends Component {
           Would you like to deploy
           <div className='field'>{this.state.selectedServiceName}</div>
           for
-          <div className='field'>6 days</div>
+          <div className='field'>{demoDeployTime} days</div>
           at a cost of
-          <div className='field'>6 CUR(demo)</div>
+          <div className='field'>{demoDeployTime} CUR(demo)</div>
           ?
         </div>
         <div className='buttons'>
@@ -202,7 +204,7 @@ class AppDeployer extends Component {
     const serviceOptions = this.state[serviceName]
     const serviceAddress = calculateServiceAddress(serviceName, serviceOptions)
 
-    this.decreaseBalance(6)
+    this.decreaseBalance(demoDeployTime)
 
     this.setState({
       feedback: <div className='column'>
