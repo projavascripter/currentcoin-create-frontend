@@ -10,7 +10,7 @@ Make sure all submodules (nested git repositories) are ready. Clear instructions
 
 `git submodule update --recursive --init`
 
-`git submodule foreach --recursive 'git fetch && git checkout master'`
+`git submodule foreach --recursive 'git pull origin master && git checkout master'`
 
 From your local machine,
 
