@@ -6,13 +6,13 @@ This is the frontend of CurrentCoin Create.
 
 ### To run
 
-Make sure all submodules (nested git repositories) are ready. Clear instructions for submodules coming soon. Useful commands:
+Clone this repo, the get the latest templates by running:
 
 `git submodule update --recursive --init`
 
 `git submodule foreach --recursive 'git pull origin master && git checkout master'`
 
-From your local machine,
+Install dependencies and start:
 
 `yarn` (or `npm install`)
 
