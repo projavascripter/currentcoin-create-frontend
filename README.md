@@ -6,7 +6,7 @@ This is the frontend of CurrentCoin Create.
 
 ### To run
 
-Clone this repo, the get the latest templates by running:
+Clone this repo, then run:
 
 `git submodule update --recursive --init`
 
