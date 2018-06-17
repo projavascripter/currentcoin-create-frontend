@@ -3,12 +3,9 @@
   --border-radius: 0.8em;
 }
 
-body {
+.AppDeployer {
   background: url("off_white_background.jpg");
-}
-
-div:focus {
-  outline: none;
+  min-height: 100%;
 }
 
 .table, .td {
@@ -131,6 +128,7 @@ div:focus {
   opacity: 0.5;
   transition: opacity 0.2s;
   z-index: 4;
+  outline: none;
 }
 
 .expand:hover {
