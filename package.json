@@ -24,10 +24,10 @@
     "web3": "^1.0.0-beta.30"
   },
   "scripts": {
-    "start": "npm run import-dependencies && react-scripts start",
-    "build": "npm run import-dependencies && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "import-dependencies": "node importDependencies.js"
+    "preinstall": "node importDependencies.js"
   }
 }
