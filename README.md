@@ -10,7 +10,7 @@ Clone this repo, the get the latest templates by running:
 
 `git submodule update --recursive --init`
 
-`git submodule foreach --recursive 'git pull origin master && git checkout master'`
+<!-- `git submodule foreach --recursive 'git pull origin master && git checkout master'` -->
 
 Install dependencies and start:
 
