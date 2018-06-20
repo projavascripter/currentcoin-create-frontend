@@ -51,7 +51,7 @@ class AppDeployer extends Component {
 
   ServiceLinkCell = ({ serviceName }) => (
     <div
-      className={`service-cell${
+      className={`td service-cell${
         this.state.selectedServiceName === serviceName
           ? ''
           : ' unselected-service-cell'
@@ -73,12 +73,12 @@ class AppDeployer extends Component {
     </div>
   )
 
-  ParamsCustomize = () => {
+  ParamsColumn = () => {
     const serviceInfo = serviceInterfaces[this.state.selectedServiceName] || {}
     const paramValues = this.state[this.state.selectedServiceName]
 
     return (
-      <div className='AppDeployer-params'>
+      <div className='column AppDeployer-params-column'>
         <div className='th'>
           Customize
         </div>
@@ -118,8 +118,8 @@ class AppDeployer extends Component {
   ServicesColumn = () => {
     return (
       <div className='column AppDeployer-services-column'>
-        <div className='th' id="template-header">
-          Templates
+        <div className='th'>
+          Select Service
         </div>
         {
           Object.keys(serviceInterfaces)
@@ -327,30 +327,31 @@ class AppDeployer extends Component {
         }
 
         <Progress tasks={this.state.progress} />
-        <div className="top-bar">
-          <ul className="top-bar-left">
-            <li><div className="logo"><img id='currentcoin-logo' src={currentCoinLogo} alt="CurrentCoin" />Current<span className="logo-color">Coin</span> Create</div></li>
-          </ul>
-          <ul className='top-bar-middle'>
-            <li className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</li>
-          </ul>
-          <ul className='top-bar-right'>
-            <li className='balance'>Your [demo] balance is {this.state.balance} CUR.</li>
-          </ul>
+        <img id='currentcoin-logo' src={currentCoinLogo} alt="CurrentCoin" />  <body>
+          <div class="logo">
+            Current<span class="logo-color">Coin</span> Create
+          </div>
+        </body>
+        <div className='top'>
+          Your Balance:
+            <div className='balance-number'>
+            {this.state.balance}
+            &nbsp;CUR(demo)
+            </div>
         </div>
+        <div className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</div>
 
-        <div className='middle' id="services-row">
-          <div id="select-template"><this.ServicesColumn /></div>
-          <div id="preview-template"><ServicePreviewCell
-            serviceName={this.state.selectedServiceName}
-            serviceOptions={this.state[this.state.selectedServiceName]}
-          /></div>
-
-        <div className='customize'>
-          <this.ParamsCustomize />
+        <div className='middle'>
+          <div className='table'>
+            <this.ServicesColumn />
+            <this.ParamsColumn />
+            <ServicePreviewCell
+              serviceName={this.state.selectedServiceName}
+              serviceOptions={this.state[this.state.selectedServiceName]}
+            />
+          </div>
         </div>
-        </div>
-      </div >
+      </div>
     );
   }
 }
