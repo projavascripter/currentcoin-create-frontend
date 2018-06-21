@@ -7,9 +7,7 @@
   margin: 0;
   background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-content: flex-start;
+  flex-direction: row;
 }
 
 .selected-cell {
@@ -21,6 +19,17 @@
   background: #2768A5;
   color: white;
   height: 100%;
+  color: black;
+  font-family: monospace;
+  padding: 0.5em 1.5em;
+  border: solid black 1px;
+  border-radius: 10em;
+  border-width: 1px;
+  user-select: none;
+  cursor: pointer;
+  display: inline;
+  z-index: 1;
+  background: white;
 }
 
 .unselected-service-cell {
@@ -61,9 +70,14 @@
 }
 
 .AppDeployer-service-preview-column {
+  width: 100%;
 }
-
 .AppDeployer-service-preview {
+  height: auto;
+  margin-right: var(--cell-margin);
+  position: relative;
+  border-radius: 0;
+  padding: 0;
 }
 
 .AppDeployer-service-preview--expanded {
@@ -163,7 +177,7 @@
   user-select: none;
   cursor: pointer;
   display: inline;
-  z-index: 1;
+  flex-grow: 1;
   background: white;
 }
 
@@ -250,6 +264,14 @@
   font-size: 0.7em;
 }
 
+.page-container {
+  display: flex;
+  align-items: flex-start; 
+  left: 0;
+  top: 0;
+  margin: 0;
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -259,16 +281,18 @@
 
 .top-bar-left {
   list-style: none;
+  margin-left: 0;
 }
 
 #currentcoin-logo {
   flex-direction: row;
-  width: 5%;
-  max-width: 200px;
-  padding: 1%;
+  width: 20%;
+  max-width: 50px;
   top: 0;
   left: 0;
   margin-left: 0;
+  margin-right: .25em;
+  align-items: center;
 }
 
 @font-face {
@@ -276,13 +300,14 @@
   src: url(maven-pro.bold.ttf);
 }
 
-.logo {
+div.logo {
   font-family: maven-pro-bold;
   color: white;
-  font-size: 2em;
+  font-size: 1.25em;
   text-align: left;
   display: flex;
   align-items: center;
+  padding-bottom: 10%
   
 }
 
@@ -300,21 +325,38 @@
   padding-right: 10%;
 }
 
+.left-column {    
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 3%
+}
+
 .middle {
   background: rgba(255, 255, 255, .7);
-  min-width: 100%;
-  margin-bottom: 0;
+  width: 900px;
+  height: 100%;
+  margin: 0 0;
   position: relative;
   bottom: 0;
   display: flex;
+  flex-grow: 1;
   align-items: flex-start;
+  font-family: 'Open Sans', sans-serif;
 }
 
-#services-row {
+.th {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 2em;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
+#template-header {
+  color: white;
+}
 #select-template {
   flex: none;
 }

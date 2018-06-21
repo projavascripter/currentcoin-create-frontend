@@ -38,7 +38,7 @@ const demoDeployTime = 1
 class AppDeployer extends Component {
 
   state = {
-    selectedServiceName: null,
+    selectedServiceName: 'BrandPage',
     balance: 100,
     feedback: null,
     progress: {},
@@ -54,7 +54,7 @@ class AppDeployer extends Component {
       className={`service-cell${
         this.state.selectedServiceName === serviceName
           ? ''
-          : ' unselected-service-cell'
+          : ' unselected service'
         }`}
       onMouseEnter={event => {
         this.setState({
@@ -327,27 +327,27 @@ class AppDeployer extends Component {
         }
 
         <Progress tasks={this.state.progress} />
-        <div className="top-bar">
-          <ul className="top-bar-left">
-            <li><div className="logo"><img id='currentcoin-logo' src={currentCoinLogo} alt="CurrentCoin" />Current<span className="logo-color">Coin</span> Create</div></li>
-          </ul>
-          <ul className='top-bar-middle'>
-            <li className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</li>
-          </ul>
-          <ul className='top-bar-right'>
-            <li className='balance'>Your [demo] balance is {this.state.balance} CUR.</li>
-          </ul>
+        <div className="page-container">
+        <div className="left-column">
+            <div className="logo"><img id='currentcoin-logo' src={currentCoinLogo} alt="CurrentCoin" />Current<span className="logo-color">Coin</span> Create</div>
+            <div id="select-template"><this.ServicesColumn /></div>
         </div>
 
-        <div className='middle' id="services-row">
-          <div id="select-template"><this.ServicesColumn /></div>
+        <div className='middle' id="services-container">
           <div id="preview-template"><ServicePreviewCell
             serviceName={this.state.selectedServiceName}
             serviceOptions={this.state[this.state.selectedServiceName]}
           /></div>
 
-        <div className='customize'>
-          <this.ParamsCustomize />
+          <div className='customize'>
+            <this.ParamsCustomize />
+            <ul className='lower-right'>
+              <li className='balance'>Your [demo] balance is {this.state.balance} CUR.</li>
+            </ul>
+            <ul className='lowest-right'>
+              <li className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</li>
+            </ul>
+          </div>
         </div>
         </div>
       </div >
