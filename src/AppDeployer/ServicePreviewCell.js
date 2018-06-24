@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import pascalCase from 'pascal-case'
 
+import ParameterCell from './ParameterCell'
+
 const context = require.context('../templates', true, /\/.+\/index.js$/)
 const servicePreviews = {}
 
@@ -35,7 +37,36 @@ export default class ServicePreviewCell extends Component {
             )
           }
         >
-          {Preview ? <Preview {...serviceOptions} /> : null}
+          {
+            Preview
+              ? <Preview
+                  {...serviceOptions}
+                  ref={ref => {
+                    const nodes = document.getElementsByClassName('adjust-title')
+                    Array.from(nodes).forEach(node => {
+                      node.addEventListener('mouseenter', () => {
+                        console.log('hello')
+                        const rect = node.getBoundingClientRect()
+                        console.log('rect:', rect)
+                      })
+                    })
+                  }}
+                />
+              : null
+          }
+          <ParameterCell
+            style={{
+              position: 'absolute',
+              top: '200',
+              left: '200',
+            }}
+            paramInfo={{
+              type: 'boolean'
+            }}
+            value={false}
+            paramName='test'
+            onValueChange={console.log}
+          />
           <div
             className='expand'
             onClick={() => this.setState({
