@@ -203,7 +203,13 @@ class AppDeployer extends Component {
   demoDeploy = () => {
     const serviceName = this.state.selectedServiceName
     const serviceOptions = this.state[serviceName]
-    const serviceAddress = calculateServiceAddress(serviceName, serviceOptions)
+
+    // this is the one and only time that the service address is calculated
+    const serviceAddress = calculateServiceAddress({
+      serviceName,
+      serviceOptions,
+      timestamp: Date.now()
+    })
 
     this.decreaseBalance(demoDeployTime)
 
@@ -230,6 +236,7 @@ class AppDeployer extends Component {
       {
         serviceName,
         serviceOptions,
+        serviceAddress,
       },
       {
         headers: {

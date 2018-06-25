@@ -10,3 +10,6 @@
 [submodule "src/templates/brand-page-template"]
 	path = src/templates/brand-page-template
 	url = https://github.com/CurrentCoin/brand-page-template.git
+[submodule "src/templates/hangman-template"]
+	path = src/templates/hangman-template
+	url = https://github.com/CurrentCoin/hangman-template.git
