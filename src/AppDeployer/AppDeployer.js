@@ -53,8 +53,8 @@ class AppDeployer extends Component {
     <div
       className={`service-cell${
         this.state.selectedServiceName === serviceName
-          ? ''
-          : ' unselected service'
+          ? ' selected-service-cell'
+          : ''
         }`}
       onMouseEnter={event => {
         this.setState({
@@ -118,9 +118,6 @@ class AppDeployer extends Component {
   ServicesColumn = () => {
     return (
       <div className='column AppDeployer-services-column'>
-        <div className='th' id="template-header">
-          Templates
-        </div>
         {
           Object.keys(serviceInterfaces)
             .map(serviceName => (
@@ -337,6 +334,9 @@ class AppDeployer extends Component {
         <div className="page-container">
         <div className="left-column">
             <div className="logo"><img id='currentcoin-logo' src={currentCoinLogo} alt="CurrentCoin" />Current<span className="logo-color">Coin</span> Create</div>
+            <div className='th' id="template-header">
+              Templates
+            </div>
             <div id="select-template"><this.ServicesColumn /></div>
         </div>
 
@@ -348,12 +348,8 @@ class AppDeployer extends Component {
 
           <div className='customize'>
             <this.ParamsCustomize />
-            <ul className='lower-right'>
-              <li className='balance'>Your [demo] balance is {this.state.balance} CUR.</li>
-            </ul>
-            <ul className='lowest-right'>
-              <li className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</li>
-            </ul>
+            <div className='balance'>Your [demo] balance is {this.state.balance} CUR.</div>
+            <div className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</div>
           </div>
         </div>
         </div>

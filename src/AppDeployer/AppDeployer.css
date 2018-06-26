@@ -64,9 +64,15 @@
   user-select: none;
   cursor: pointer;
   height: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .AppDeployer-params {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .AppDeployer-service-preview-column {
@@ -279,10 +285,12 @@
 
 .page-container {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   left: 0;
   top: 0;
   margin: 0;
+  width: 100%;
 }
 
 .top-bar {
@@ -329,30 +337,29 @@ div.logo {
 }
 
 .balance {
-  display: flex;
-  align-items: flex-end;
-  color: white;
-  margin-left: 10%;
+  color: black;
   font-size: small;
-  width: 20em;
-  padding-right: 10%;
+  margin: 1em 0;
 }
 
 .left-column {
   left: 0;
   top: 0;
   margin: 0;
-  padding: 3%
+  padding: 2em;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .middle {
   background: rgba(255, 255, 255, .7);
-  width: 900px;
+  width: 100%;
   height: 100%;
   margin: 0 0;
   position: relative;
   bottom: 0;
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   align-items: flex-start;
   font-family: 'Open Sans', sans-serif;
@@ -370,10 +377,56 @@ div.logo {
 #template-header {
   color: white;
 }
+
 #select-template {
   flex: none;
 }
 
 #preview-template {
   flex: 3;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.selected-service-cell {
+  color: white;
+  background-color: #1dafec;
+}
+
+.customize {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em 0;
+}
+
+/* above is for mobile */
+/* below is for bigger screens */
+@media (min-width: 720px) {
+  .page-container {
+    flex-direction: row;
+  }
+
+  .middle {
+    flex-direction: row;
+  }
+
+  .AppDeployer-services-column {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .customize {
+    width: 30%;
+    min-width: 12em;
+  }
+
+  .left-column {
+    width: auto;
+  }
+
+  .balance {
+    color: white;
+  }
 }
