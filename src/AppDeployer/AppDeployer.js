@@ -330,30 +330,35 @@ class AppDeployer extends Component {
             : null
         }
 
-        <Progress tasks={this.state.progress} />
         <div className="page-container">
-        <div className="left-column">
-            <div className="logo"><img id='currentcoin-logo' src={currentCoinLogo} alt="CurrentCoin" />Current<span className="logo-color">Coin</span> Create</div>
+          <div className="left-column">
+            <div className="logo">
+              <img id='currentcoin-logo' src={currentCoinLogo} alt="CurrentCoin" />
+              Current<span className="logo-color">Coin</span> Create
+            </div>
             <div className='th' id="template-header">
               Templates
             </div>
             <div id="select-template"><this.ServicesColumn /></div>
-        </div>
+          </div>
 
-        <div className='middle' id="services-container">
-          <div id="preview-template"><ServicePreviewCell
-            serviceName={this.state.selectedServiceName}
-            serviceOptions={this.state[this.state.selectedServiceName]}
-          /></div>
+          <div className='middle' id="services-container">
+            <div id="preview-template">
+              <ServicePreviewCell
+                serviceName={this.state.selectedServiceName}
+                serviceOptions={this.state[this.state.selectedServiceName]}
+              />
+            </div>
 
-          <div className='customize'>
-            <this.ParamsCustomize />
-            <div className='balance'>Your [demo] balance is {this.state.balance} CUR.</div>
-            <div className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</div>
+            <div className='customize'>
+              <this.ParamsCustomize />
+              <div className='balance'>Your [demo] balance is {this.state.balance} CUR.</div>
+              <div className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</div>
+            </div>
           </div>
         </div>
-        </div>
-      </div >
+        <Progress tasks={this.state.progress} />
+      </div>
     );
   }
 }

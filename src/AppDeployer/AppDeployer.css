@@ -141,13 +141,13 @@
 }
 
 .deploy-feedback {
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  position: fixed;
+  top: unset;
+  right: unset;
   min-width: 50%;
   background-color: rgba(197, 59, 170, 0.984);
   z-index: 5;
-  padding: 4em;
+  padding: 2em;
   box-shadow: 0 0 1em #0007;
   border-radius: var(--border-radius);
   display: flex;
@@ -257,7 +257,7 @@
 }
 
 .progress {
-  position: absolute;
+  position: fixed;
   bottom: 0.5em;
   left: 0.5em;
   align-items: baseline;
@@ -420,6 +420,8 @@ div.logo {
   background: #fffE;
 }
 
+/* FIXME: when preview height changes, customize section jumps around */
+
 /* above is for mobile */
 /* below is for bigger screens */
 @media (min-width: 720px) {
@@ -455,5 +457,11 @@ div.logo {
 
   #preview-template {
     margin: 1em 0;
+  }
+
+  .deploy-feedback {
+    top: 0.5em;
+    right: 0.5em;
+    padding: 4em;
   }
 }
