@@ -79,7 +79,7 @@ class AppDeployer extends Component {
 
     return (
       <div className='AppDeployer-params'>
-        <div className='th'>
+        <div className='th customize-header'>
           Customize
         </div>
         {

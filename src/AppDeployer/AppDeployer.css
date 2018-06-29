@@ -154,6 +154,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  word-break: break-all;
 }
 
 .qr {
@@ -406,6 +407,11 @@ div.logo {
 
 .preview-header {
   display: none;
+  padding-bottom: 0.5em;
+}
+
+.customize-header {
+  padding-bottom: 0.5em;
 }
 
 .parameter-cell {
