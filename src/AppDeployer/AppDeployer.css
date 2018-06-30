@@ -1,67 +1,40 @@
 :root {
-  --cell-margin: 0.8em;
-  --border-radius: 0.8em;
 }
 
 .AppDeployer {
-  background: url("off_white_background.jpg");
+  background: url("currentcoin_background.png");
   min-height: 100%;
-}
-
-.table, .td {
-  border-width: 1px;
-  border-radius: var(--border-radius);
-}
-
-.table {
-  width: 100%;
-  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: row;
-  margin-bottom: var(--cell-margin);
-}
-
-.td {
-  background-color: #1DAEEC77; /*#1DAEEC18;*/
-  padding: 0.8em;
-  margin-top: var(--cell-margin);
-  margin-left: var(--cell-margin);
-  overflow: hidden;
-  height: 2em;
-  width: stretch;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.selected-cell {
-  background: #fffE;
 }
 
 .service-cell {
   /* #2045B5; #1DAEEC77; #3C1DEC; #1F72D1; #21355E;*/
   background: #2768A5;
   color: white;
+  height: 100%;
+  color: black;
+  font-family: monospace;
+  padding: 0.5em 1.5em;
+  border: solid black 1px;
+  border-radius: 10em;
+  border-width: 1px;
+  user-select: none;
+  cursor: pointer;
+  display: inline;
+  z-index: 1;
+  background: white;
 }
 
 .unselected-service-cell {
   opacity: 0.5;
 }
 
-.th {
-  text-align: center;
-  margin-bottom: 0.3em;
-  margin-left: var(--cell-margin);
-  font-weight: bold;
-  cursor: default;
-  /* display: none; */
-}
-
 .column {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .input {
@@ -84,19 +57,23 @@
 }
 
 .AppDeployer-services-column {
-  width: 20%;
   user-select: none;
   cursor: pointer;
+  height: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.AppDeployer-params-column {
-  width: 30%;
+.AppDeployer-params {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .AppDeployer-service-preview-column {
-  width: 49%;
+  width: 100%;
 }
-
 .AppDeployer-service-preview {
   height: auto;
   margin-right: var(--cell-margin);
@@ -106,7 +83,7 @@
 }
 
 .AppDeployer-service-preview--expanded {
-  position: absolute;
+  position: fixed;
   margin: 0;
   padding: 0;
   top: 0;
@@ -120,28 +97,19 @@
 
 .expand {
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  top: 0;
+  right: 0.3em;
   font-size: 1.4em;
   color: white;
   text-shadow: 0 0 0.5em #0007, 0 0 1em #0007;
   opacity: 0.5;
   transition: opacity 0.2s;
-  z-index: 4;
   outline: none;
 }
 
 .expand:hover {
   cursor: pointer;
   opacity: 1;
-}
-
-.top {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 1.5em 1.5em;
 }
 
 .title {
@@ -154,6 +122,7 @@
   font-family: monospace;
   display: inline;
   padding: 0 0.5em;
+  background: white;
 }
 
 .field {
@@ -169,24 +138,23 @@
 }
 
 .h3 {
-  margin-top: 1em;
-  margin-bottom: 0;
 }
 
 .deploy-feedback {
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  position: fixed;
+  top: unset;
+  right: unset;
   min-width: 50%;
-  background-color: #CFCACEFB;
+  background-color: rgba(197, 59, 170, 0.984);
   z-index: 5;
-  padding: 4em;
+  padding: 2em;
   box-shadow: 0 0 1em #0007;
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  word-break: break-all;
 }
 
 .qr {
@@ -225,6 +193,8 @@
   user-select: none;
   cursor: pointer;
   display: inline;
+  flex-grow: 1;
+  background: white;
 }
 
 .deploy-button:hover {
@@ -288,7 +258,7 @@
 }
 
 .progress {
-  position: absolute;
+  position: fixed;
   bottom: 0.5em;
   left: 0.5em;
   align-items: baseline;
@@ -308,4 +278,196 @@
 
 .small-link {
   font-size: 0.7em;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.top-bar-left {
+  list-style: none;
+  margin-left: 0;
+}
+
+#currentcoin-logo {
+  flex-direction: row;
+  width: 20%;
+  max-width: 50px;
+  top: 0;
+  left: 0;
+  margin-left: 0;
+  margin-right: .25em;
+  align-items: center;
+}
+
+@font-face {
+  font-family: maven-pro-bold;
+  src: url(maven-pro.bold.ttf);
+}
+
+div.logo {
+  font-family: maven-pro-bold;
+  color: white;
+  font-size: 1.25em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-bottom: 2em;
+
+}
+
+.logo-color {
+  color: #1dafec;
+}
+
+.balance {
+  color: black;
+  font-size: small;
+  margin: 1em 0;
+}
+
+.left-column {
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 1em 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 15em;
+}
+
+.middle {
+  background: rgba(255, 255, 255, .7);
+  width: 100%;
+  height: 100%;
+  margin: 0 0;
+  position: relative;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-start;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.th {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#template-header {
+  color: white;
+  padding-bottom: 0.5em;
+}
+
+#select-template {
+  flex: none;
+  padding: 0 2em;
+}
+
+#preview-template {
+  /* flex: 3; */
+  width: 100%;
+  margin: 0;
+}
+
+.selected-service-cell {
+  color: white;
+  background-color: #1dafec;
+}
+
+.customize {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.preview-header {
+  display: none;
+  padding-bottom: 0.5em;
+}
+
+.customize-header {
+  padding-bottom: 0.5em;
+}
+
+.parameter-cell {
+  height: 1.8em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected-cell {
+  background: #fffE;
+}
+
+/* FIXME: when preview height changes, customize section jumps around */
+
+/* above is for mobile */
+/* below is for bigger screens */
+@media (min-width: 720px) {
+  .page-container {
+    flex-direction: row;
+  }
+
+  .middle {
+    flex-direction: row;
+  }
+
+  .AppDeployer-services-column {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .customize {
+    width: 30%;
+    min-width: 12em;
+  }
+
+  .left-column {
+    width: auto;
+  }
+
+  .balance {
+    color: white;
+  }
+
+  .preview-header {
+    display: flex;
+  }
+
+  #preview-template {
+    margin: 1em 0;
+  }
+
+  .deploy-feedback {
+    top: 0.5em;
+    right: 0.5em;
+    padding: 4em;
+  }
 }

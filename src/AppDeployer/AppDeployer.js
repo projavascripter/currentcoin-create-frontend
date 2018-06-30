@@ -3,6 +3,7 @@ import axios from 'axios'
 import titleCase from 'title-case'
 import pascalCase from 'pascal-case'
 
+import currentCoinLogo from './CurrentCoinLogo.svg'
 import 'font-awesome/css/font-awesome.css'
 import './AppDeployer.css';
 
@@ -37,7 +38,7 @@ const demoDeployTime = 1
 class AppDeployer extends Component {
 
   state = {
-    selectedServiceName: null,
+    selectedServiceName: 'BrandPage',
     balance: 100,
     feedback: null,
     progress: {},
@@ -50,10 +51,10 @@ class AppDeployer extends Component {
 
   ServiceLinkCell = ({ serviceName }) => (
     <div
-      className={`td service-cell${
+      className={`service-cell${
         this.state.selectedServiceName === serviceName
-          ? ''
-          : ' unselected-service-cell'
+          ? ' selected-service-cell'
+          : ''
         }`}
       onMouseEnter={event => {
         this.setState({
@@ -68,17 +69,17 @@ class AppDeployer extends Component {
         }
       }}
     >
-        {titleCase(serviceName)}
+      {titleCase(serviceName)}
     </div>
   )
 
-  ParamsColumn = () => {
+  ParamsCustomize = () => {
     const serviceInfo = serviceInterfaces[this.state.selectedServiceName] || {}
     const paramValues = this.state[this.state.selectedServiceName]
 
     return (
-      <div className='column AppDeployer-params-column'>
-        <div className='th'>
+      <div className='AppDeployer-params'>
+        <div className='th customize-header'>
           Customize
         </div>
         {
@@ -117,17 +118,14 @@ class AppDeployer extends Component {
   ServicesColumn = () => {
     return (
       <div className='column AppDeployer-services-column'>
-        <div className='th'>
-          Select Service
-        </div>
         {
           Object.keys(serviceInterfaces)
-          .map(serviceName => (
-            <this.ServiceLinkCell
-              key={serviceName}
-              serviceName={serviceName}
-            />
-          ))
+            .map(serviceName => (
+              <this.ServiceLinkCell
+                key={serviceName}
+                serviceName={serviceName}
+              />
+            ))
         }
       </div>
     )
@@ -190,7 +188,7 @@ class AppDeployer extends Component {
           </div>
           <div
             className='deploy-button yes-no-button'
-            onClick={() => this.setState({feedback: null})}
+            onClick={() => this.setState({ feedback: null })}
           >
             No
           </div>
@@ -245,67 +243,67 @@ class AppDeployer extends Component {
         timeout: 300000 // 5 min
       }
     )
-    .then(response => {
-      // console.log('Response from server after trying to save:', response)
-      this.setState({
-        progress: Object.assign({}, this.state.progress, {
-          [serviceAddress]: {
-            state: 'deploying',
-            txHash: response.data
-          }
+      .then(response => {
+        // console.log('Response from server after trying to save:', response)
+        this.setState({
+          progress: Object.assign({}, this.state.progress, {
+            [serviceAddress]: {
+              state: 'deploying',
+              txHash: response.data
+            }
+          })
+        })
+
+        return this.checkIfDeployed(serviceAddress)
+      })
+      .catch(error => {
+        console.error('Problem saving or transferring or deploying')
+        console.error(error)
+
+        const errorMessage = error.message.slice(0, 7) === 'timeout'
+          ? 'The token transfer is taking longer than expected.'
+          : undefined
+
+        this.setState({
+          progress: Object.assign({}, this.state.progress, {
+            [serviceAddress]: {
+              state: 'error',
+              errorMessage,
+              serviceUrl: `http://${serviceAddress}.s3-website.us-east-2.amazonaws.com`
+            }
+          })
         })
       })
-
-      return this.checkIfDeployed(serviceAddress)
-    })
-    .catch(error => {
-      console.error('Problem saving or transferring or deploying')
-      console.error(error)
-
-      const errorMessage = error.message.slice(0, 7) === 'timeout'
-        ? 'The token transfer is taking longer than expected.'
-        : undefined
-
-      this.setState({
-        progress: Object.assign({}, this.state.progress, {
-          [serviceAddress]: {
-            state: 'error',
-            errorMessage,
-            serviceUrl: `http://${serviceAddress}.s3-website.us-east-2.amazonaws.com`
-          }
-        })
-      })
-    })
   }
 
   checkIfDeployed(serviceAddress) {
     return axios.get(`/checkservice/${serviceAddress}`)
-    .then(response => {
-      if (response.status === 201 || response.status === 200) {
+      .then(response => {
+        if (response.status === 201 || response.status === 200) {
 
-        // wait an extra 2 seconds because it seems that the aws server has
-        // access to the deployed service before us
-        setTimeout(() => {
-          const { txHash } = this.state.progress[serviceAddress]
+          // wait an extra 2 seconds because it seems that the aws server has
+          // access to the deployed service before us
+          setTimeout(() => {
+            const { txHash } = this.state.progress[serviceAddress]
 
-          this.setState({
-            progress: Object.assign({}, this.state.progress, {
-              [serviceAddress]: {
-                state: 'done',
-                txHash: txHash,
-                serviceUrl: `http://${serviceAddress}.s3-website.us-east-2.amazonaws.com`
-              }
+            this.setState({
+              progress: Object.assign({}, this.state.progress, {
+                [serviceAddress]: {
+                  state: 'done',
+                  txHash: txHash,
+                  serviceUrl: `http://${serviceAddress}.s3-website.us-east-2.amazonaws.com`
+                }
+              })
             })
-          })
-        }, 3000)
+          }, 3000)
 
-      } else {
+        } else {
+          setTimeout(() => this.checkIfDeployed(serviceAddress), 5000)
+        }
+      })
+      .catch(response => {
         setTimeout(() => this.checkIfDeployed(serviceAddress), 5000)
-      }
-    })
-    .catch(response => {
-      setTimeout(() => this.checkIfDeployed(serviceAddress), 5000)
-    })
+      })
   }
 
   decreaseBalance(amount) {
@@ -320,48 +318,46 @@ class AppDeployer extends Component {
       <div className='AppDeployer'>
         {
           this.state.feedback
-          ? (
-            <div className='deploy-feedback'>
-              <i
-                className='fa fa-times close-feedback'
-                onClick={() => this.setState({feedback: null})}
-              />
-                {this.state.feedback}
-            </div>
-          )
-          : null
+            ? (
+              <div className='deploy-feedback'>
+                <i className='fa fa-times close-feedback' onClick={() => this.setState({
+                  feedback: null
+                })}
+                />
+                <div>{this.state.feedback}</div>
+              </div>
+            )
+            : null
         }
 
-        <Progress tasks={this.state.progress} />
+        <div className="page-container">
+          <div className="left-column">
+            <div className="logo">
+              <img id='currentcoin-logo' src={currentCoinLogo} alt="CurrentCoin" />
+              Current<span className="logo-color">Coin</span> Create
+            </div>
+            <div className='th' id="template-header">
+              Templates
+            </div>
+            <div id="select-template"><this.ServicesColumn /></div>
+          </div>
 
-        <div className='top'>
-          <div className='title'>CurrentCoin Create</div>
-          <div className='balance'>
-            Your Balance:
-            <div className='balance-number'>
-              {this.state.balance}
-              &nbsp;CUR(demo)
+          <div className='middle' id="services-container">
+            <div id="preview-template">
+              <ServicePreviewCell
+                serviceName={this.state.selectedServiceName}
+                serviceOptions={this.state[this.state.selectedServiceName]}
+              />
+            </div>
+
+            <div className='customize'>
+              <this.ParamsCustomize />
+              <div className='balance'>Your [demo] balance is {this.state.balance} CUR.</div>
+              <div className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</div>
             </div>
           </div>
-          <div
-            className='deploy-button'
-            onClick={this.confirmDeploy}
-          >
-            Deploy Service
-          </div>
         </div>
-        {/* <DeployOptions
-          serviceName={this.state.selectedServiceName}
-          serviceOptions={this.state[this.state.selectedServiceName]}
-        /> */}
-        <div className='table'>
-          <this.ServicesColumn />
-          <this.ParamsColumn />
-          <ServicePreviewCell
-            serviceName={this.state.selectedServiceName}
-            serviceOptions={this.state[this.state.selectedServiceName]}
-          />
-        </div>
+        <Progress tasks={this.state.progress} />
       </div>
     );
   }

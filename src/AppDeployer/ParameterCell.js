@@ -25,7 +25,7 @@ export default class ParameterCell extends Component {
 
     return (
       <div
-        className={`td${
+        className={`td parameter-cell${
           this.state.editing
             ? ' selected-cell'
             : ''
