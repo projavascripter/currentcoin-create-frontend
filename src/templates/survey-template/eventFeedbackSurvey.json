@@ -1,0 +1,96 @@
+{
+	"title": "Let us know how you experienced our event.",
+	"pages": [{
+		"name": "page1",
+		"questions": [{
+				"type": "radiogroup",
+				"choices": ["Not satisfied", "Neutral", "Satisfied", "Very satisfied"],
+				"name": "howSatisfied",
+				"title": "How satisfied were you with the event?"
+			},
+			{
+				"type": "checkbox",
+				"name": "partsEventRating",
+                "title": "Please rate the following parts of the event, with 1 being as least satisfied and 5 being the most satisfied.",
+                "columns": [
+                    { 
+                        "value": 1,
+                        "text": "Very unsatisfied"
+                    },
+                    {
+                        "value": 1,
+                        "text": "Unsatisfied"
+                    }, 
+                    {
+                        "value": 1,
+                        "text": "Neutral"
+                    },
+                    {
+                        "value": 1,
+                        "text": "Satisfied"
+                    },
+                    {
+                        "value": 1,
+                        "text": "Very satisfied"
+                    }
+                ],
+                "rows": [
+                    {
+                        "value": "date",
+                        "text": "Date of the event"
+                    },
+                    {
+                        "value": "date",
+                        "text": "Location of the event"
+                    },
+                    {
+                        "value": "speakers",
+                        "text": "Speakers at the event"
+                    },
+                    {
+                        "value": "vendors",
+                        "text": "Vendors at the event"
+                    },
+                    {
+                        "value": "catering",
+                        "text": "Catering at the event"
+                    }
+                ]
+            },
+            {
+                "type": "comment",
+                "name": "keynoteComments",
+                "title": "Describe your favorite parts of the keynote speaker's presentation. What could the speaker improve?"
+            },
+            {
+                "type": "comment",
+                "name": "likeComments",
+                "title": "What did you like best out of the whole experience?"
+            },
+            {
+                "type": "comment",
+                "name": "dislikedComments",
+                "title": "What did you dislike out of the whole experience? Please add your critical points constructively."
+            },
+            {
+                "type": "radiogroup",
+                "name": "attendAgain",
+                "title": "Do you plean to attend one of our events again?",
+                "choices": ["yes", "no"]
+            },
+            {
+                "type": "checkbox",
+                "name": "willRecommend",
+                "title": "Do you plan to recommend this events to friends, family, or coworkers?",
+                "choices": ["friends", "family", "coworkers", "will not recommend", "other"]
+            },
+            {
+                "type": "comment",
+                "name": "ifOther",
+                "title": "Please elaborate on your selection of 'other'",
+                "visibleIf": "{willRecommend}='other'"
+            }
+		]
+	}]
+}
+

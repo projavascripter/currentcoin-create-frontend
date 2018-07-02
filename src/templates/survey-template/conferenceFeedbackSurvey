@@ -1,0 +1,26 @@
+{
+	"title": "Conference Feedback",
+	"pages": [{
+		"name": "page1",
+		"questions": [{
+				"type": "radiogroup",
+				"choices": ["Not Satisfied", "Neutral", "Satisfied"],
+				"name": "howSatisfied",
+				"title": "How satisfied were you with the conference?"
+			},
+			{
+				"type": "checkbox",
+				"choices": ["Parking and coffee should be included in college tuition fee.", "How playing games raised your IQ.", "Limit alternatives to make your choices easier.", "How to get a spouse to hand over the remote."],
+				"hasOther": true,
+				"name": "presentations",
+				"title": "Please choose your favorite presentations of the day."
+            },
+            {
+				"type": "dropdown",
+				"choices": ["Parking and coffee should be included in college tuition fee.", "How playing games raised your IQ.", "Limit alternatives to make your choices easier.", "How to get a spouse to hand over the remote."],
+				"name": "oneTopic",
+				"title": "Choose one topic you would like to see covered at future conferences"
+			}
+		]
+	}]
+}
