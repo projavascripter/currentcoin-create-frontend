@@ -24,7 +24,7 @@ export default class ServicePreviewCell extends Component {
 
     return (
       <div className='AppDeployer-service-preview-column'>
-        <div className='th'>
+        <div className='th preview-header'>
           Preview
         </div>
         <div
