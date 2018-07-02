@@ -13,3 +13,12 @@
 [submodule "src/templates/hangman-template"]
 	path = src/templates/hangman-template
 	url = https://github.com/CurrentCoin/hangman-template.git
+[submodule "survey-template"]
+	path = survey-template
+	url = git@github.com:CurrentCoin/survey-template.git
+[submodule "src/templates/--force"]
+	path = src/templates/--force
+	url = git@github.com:CurrentCoin/survey-template.git
+[submodule "src/templates/survey-template"]
+	path = src/templates/survey-template
+	url = git@github.com:CurrentCoin/survey-template.git
