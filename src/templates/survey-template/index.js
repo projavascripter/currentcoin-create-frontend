@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as Survey from "survey-react";
 import "./survey.css"
-import "./index.css"
 import eventFeedbackSurvey from './eventFeedbackSurvey.json'
 import conferenceFeedbackSurvey from './conferenceFeedbackSurvey.json'
 import demoSurvey from './demoSurvey.json'
