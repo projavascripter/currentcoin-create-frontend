@@ -342,7 +342,7 @@ class AppDeployer extends Component {
             <div id="select-template"><this.ServicesColumn /></div>
           </div>
 
-          <div className='middle' id="services-container">
+          {/* <div className='middle' id="services-container"> */}
             <div id="preview-template">
               <ServicePreviewCell
                 serviceName={this.state.selectedServiceName}
@@ -355,7 +355,7 @@ class AppDeployer extends Component {
               <div className='balance'>Your [demo] balance is {this.state.balance} CUR.</div>
               <div className='deploy-button' onClick={this.confirmDeploy}>Deploy Service</div>
             </div>
-          </div>
+          {/* </div> */}
         </div>
         <Progress tasks={this.state.progress} />
       </div>

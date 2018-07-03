@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   display: flex;
   flex-direction: row;
+  min-width: 100%;
 }
 
 .service-cell {
@@ -193,7 +194,6 @@
   user-select: none;
   cursor: pointer;
   display: inline;
-  flex-grow: 1;
   background: white;
 }
 
@@ -282,6 +282,7 @@
 
 .page-container {
   display: flex;
+  grid-template-columns: repeat(5, 1fr);
   flex-direction: column;
   align-items: flex-start;
   left: 0;
@@ -325,6 +326,7 @@ div.logo {
   text-align: left;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding-bottom: 2em;
 
 }
@@ -340,13 +342,14 @@ div.logo {
 }
 
 .left-column {
+  grid-column: 1;
   left: 0;
   top: 0;
   margin: 0;
   padding: 1em 0;
   width: 100%;
   box-sizing: border-box;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -390,6 +393,9 @@ div.logo {
   /* flex: 3; */
   width: 100%;
   margin: 0;
+  grid-column: 2 / 5;
+  background: rgba(255, 255, 255, .7);
+  height: 100%;
 }
 
 .selected-service-cell {
@@ -402,7 +408,10 @@ div.logo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1em 0;
+  padding: 1em 0;
+  gird-column: 5;
+  background: rgba(255, 255, 255, .7);
+  height: 100%;
 }
 
 .preview-header {
@@ -427,11 +436,13 @@ div.logo {
 }
 
 /* FIXME: when preview height changes, customize section jumps around */
+/* FIXME: when preview is expanded, cannot scroll */
 
 /* above is for mobile */
 /* below is for bigger screens */
 @media (min-width: 720px) {
   .page-container {
+    display: grid;
     flex-direction: row;
   }
 
@@ -445,7 +456,6 @@ div.logo {
   }
 
   .customize {
-    width: 30%;
     min-width: 12em;
   }
 
@@ -462,7 +472,7 @@ div.logo {
   }
 
   #preview-template {
-    margin: 1em 0;
+    padding: 1em 0;
   }
 
   .deploy-feedback {
