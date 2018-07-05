@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import noCase from 'no-case'
+import titleCase from 'title-case'
 
 export default class ParameterCell extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ export default class ParameterCell extends Component {
       >
         {
           !this.state.editing
-            ? noCase(paramName)
+            ? titleCase(paramName)
             : paramInfo.type !== 'enum'
               ? (
                 <input
