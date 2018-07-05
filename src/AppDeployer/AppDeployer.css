@@ -412,6 +412,7 @@ div.logo {
   gird-column: 5;
   background: rgba(255, 255, 255, .7);
   height: 100%;
+  box-sizing: border-box;
 }
 
 .preview-header {
@@ -473,6 +474,7 @@ div.logo {
 
   #preview-template {
     padding: 1em 0;
+    box-sizing: border-box;
   }
 
   .deploy-feedback {
