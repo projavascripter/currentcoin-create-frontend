@@ -16,3 +16,6 @@
 [submodule "src/templates/survey-template-temp"]
 	path = src/templates/survey-template-temp
 	url = https://github.com/CurrentCoin/survey-template-temp.git
+[submodule "src/templates/combined-template"]
+	path = src/templates/survey-template
+	url = https://github.com/CurrentCoin/combined-template.git
